@@ -3,7 +3,7 @@ EXPLOSIONS_HD = [];
 
 for (var i = 0; i < 15; i++) {
   EXPLOSIONS_HD.push(new Image());
-  EXPLOSIONS_HD[i].src = `images/explosionsHD/${i + 1}.png`;
+  EXPLOSIONS_HD[i].src = `https://kevinbacabac.github.io/WebLibrary/images/explosionsHD/${i + 1}.png`;
 }
 
 function drawExplosionImage(frame, x, y) {
