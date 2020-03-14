@@ -11,6 +11,7 @@ class Collection {
     var new_obj = new this.classType(...args);
     new_obj.id = this.nextId;
 
+    console.assert(!this.all.has(this.nextId));
     this.all.set(this.nextId, new_obj);
     this.nextId += 1;
   }
@@ -22,10 +23,12 @@ class Collection {
   }
 
   find(id) {
+    console.assert(this.all.has(id));
     return this.all.get(id);
   }
 
   remove(id) {
+    console.assert(this.all.has(id));
     this.all.delete(id);
   }
 }
