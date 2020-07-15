@@ -1,23 +1,23 @@
 function collisionRect(object1, object2) {
-    return (object1.x < object2.x + object2.width &&
-            object1.x + object1.width > object2.x &&
-            object1.y < object2.y + object2.height &&
-            object1.y + object1.height > object2.y)
+	return (object1.x < object2.x + object2.width &&
+		object1.x + object1.width > object2.x &&
+		object1.y < object2.y + object2.height &&
+		object1.y + object1.height > object2.y)
 
 }
 
 function collisionPoint(pointX, pointY, rect) {
 	return (pointX > rect.x && pointX < rect.right() &&
-		    	pointY > rect.y && pointY < rect.bottom());
+		pointY > rect.y && pointY < rect.bottom());
 }
 
 class Rect {
-  constructor(x, y, w, h) {
-  	this.x = x;
-  	this.y = y;
+	constructor(x, y, w, h) {
+		this.x = x;
+		this.y = y;
 
-  	this.width = w;
-  	this.height = h;
+		this.width = w;
+		this.height = h;
 	}
 
 	right() {
@@ -28,9 +28,9 @@ class Rect {
 		return this.y + this.height;
 	}
 
-  pos() {
-    return [this.x, this.y];
-  }
+	pos() {
+		return [this.x, this.y];
+	}
 
 	center() {
 		return [this.centerx(), this.centery()];
@@ -44,29 +44,29 @@ class Rect {
 		return this.x + this.width / 2;
 	}
 
-  dist(rectTwo) {
-  	var x1, y1;
-    [x1, y1] = this.center();
+	dist(rectTwo) {
+		var x1, y1;
+		[x1, y1] = this.center();
 
-    var x2, y2;
-    [x2, y2] = rectTwo.center();
+		var x2, y2;
+		[x2, y2] = rectTwo.center();
 
-  	return Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
-  }
+		return Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
+	}
 
 	draw() {
 		ctx.fillRect(Math.round(this.x), Math.round(this.y),
-                 Math.round(this.width), Math.round(this.height));
+			Math.round(this.width), Math.round(this.height));
 	}
 
-  drawSphere(colour) {
-    ctx.fillStyle = colour;
-    ctx.beginPath();
-    // Radius is slightly smaller than collision rect
-    var radius = (this.width + this.height) / 2 - 1;
-    ctx.arc(this.centerx(), this.centery(), radius, 0, TAU);
-    ctx.fill();
-  }
+	drawSphere(colour) {
+		ctx.fillStyle = colour;
+		ctx.beginPath();
+		// Radius is slightly smaller than collision rect
+		var radius = (this.width + this.height) / 2 - 1;
+		ctx.arc(this.centerx(), this.centery(), radius, 0, TAU);
+		ctx.fill();
+	}
 
 	highlightDraw() {
 		//Make button brighter when moused over
@@ -84,7 +84,7 @@ class Rect {
 
 	mouseOver() {
 		return (mx > this.x && mx < this.right() &&
-				my > this.y && my < this.bottom());
+			my > this.y && my < this.bottom());
 	}
 
 	inflate(dw, dh) {
@@ -99,9 +99,9 @@ class Rect {
 
 	debug() {
 		console.log('x: ' + this.x,
-      					'y: ' + this.y,
-      					'w: ' + this.width,
-      					'h: ' + this.height);
+			'y: ' + this.y,
+			'w: ' + this.width,
+			'h: ' + this.height);
 	}
 
 	setCenter(targetRect) {

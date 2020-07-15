@@ -27,7 +27,7 @@ function drawExplosionImage(frame, x, y) {
   var destHeight = h;
 
   ctx.drawImage(img, sourceX, sourceY, sourceWidth, sourceHeight,
-                destX, destY, destWidth, destHeight);
+    destX, destY, destWidth, destHeight);
 }
 
 

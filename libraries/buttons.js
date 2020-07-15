@@ -4,17 +4,17 @@ class Button { // Base class which other classes inherit
     this.underline = false;
   }
 
-	draw() {
-		// Draw button
+  draw() {
+    // Draw button
     // May be overwritten by inheritance
-		ctx.fillStyle = this.getColour();
-		ctx.globalAlpha = 0.4;
-		this.rect.draw();
-		ctx.globalAlpha = 1;
-		// Draw highlight if mouseover
-		this.rect.highlightDraw();
+    ctx.fillStyle = this.getColour();
+    ctx.globalAlpha = 0.4;
+    this.rect.draw();
+    ctx.globalAlpha = 1;
+    // Draw highlight if mouseover
+    this.rect.highlightDraw();
 
-		ctx.fillStyle = 'white';
+    ctx.fillStyle = 'white';
 
     ctx.fillText(this.text, this.rect.centerx(), this.rect.centery());
 
@@ -27,11 +27,11 @@ class Button { // Base class which other classes inherit
     var width = ctx.measureText(text).width;
     var padding = width * 0.05;
 
-    switch(ctx.textAlign) {
+    switch (ctx.textAlign) {
       case "center":
-      x -= (width/2); break;
+        x -= (width / 2); break;
       case "right":
-      x -= width; break;
+        x -= width; break;
     }
 
     var height = ctx.measureText('I').width;
@@ -39,28 +39,28 @@ class Button { // Base class which other classes inherit
 
     ctx.beginPath();
     ctx.strokeStyle = ctx.fillStyle;
-    ctx.moveTo(x-padding,y);
-    ctx.lineTo(x+width+padding,y);
+    ctx.moveTo(x - padding, y);
+    ctx.lineTo(x + width + padding, y);
     ctx.stroke();
 
   }
 
-	getColour() {
-		return 'white';
-	}
+  getColour() {
+    return 'white';
+  }
 }
 
 class MenuButton extends Button {
   constructor(y, text) {
     super(text);
 
-  	// Center button horizontally
-  	this.rect = new Rect(w / 2 - BUTTON_WIDTH / 2, y, BUTTON_WIDTH, BUTTON_HEIGHT);
-	}
+    // Center button horizontally
+    this.rect = new Rect(w / 2 - BUTTON_WIDTH / 2, y, BUTTON_WIDTH, BUTTON_HEIGHT);
+  }
 }
 
 class ToggleButton extends MenuButton {
-	constructor(y, text) {
+  constructor(y, text) {
     super(y, text);
 
     // Make button bigger than default
@@ -68,25 +68,25 @@ class ToggleButton extends MenuButton {
     this.rect.x -= 10;
 
     this.prefix = text;
-	}
+  }
 
-	update(toggleVariable) {
-		var suffix;
-		if (toggleVariable) {
-			suffix = 'On';
-		} else {
-			suffix = 'Off';
-		}
+  update(toggleVariable) {
+    var suffix;
+    if (toggleVariable) {
+      suffix = 'On';
+    } else {
+      suffix = 'Off';
+    }
 
-		this.text = `${this.prefix} - ${suffix}`;
-	}
+    this.text = `${this.prefix} - ${suffix}`;
+  }
 }
 
 class SmallButton extends Button {
   constructor(x, y, width, height, text) {
     super(text);
 
-  	// Center button horizontally
-  	this.rect = new Rect(x, y, width, height);
+    // Center button horizontally
+    this.rect = new Rect(x, y, width, height);
   }
 }

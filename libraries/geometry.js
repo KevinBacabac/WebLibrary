@@ -9,11 +9,13 @@ function drawSphere(rect, colour) {
 
 // http://stackoverflow.com/questions/2259476/rotating-a-point-about-another-point-2d
 function rotatePoint(originX, originY, pointX, pointY, angle) {
-	var COS = Math.cos(angle);
-	var SIN = Math.sin(angle);
+  var COS = Math.cos(angle);
+  var SIN = Math.sin(angle);
 
-	return {x: COS * (pointX - originX) - SIN * (pointY - originY) + originX,
-				  y: SIN * (pointX - originX) - COS * (pointY - originY) + originY};
+  return {
+    x: COS * (pointX - originX) - SIN * (pointY - originY) + originX,
+    y: SIN * (pointX - originX) - COS * (pointY - originY) + originY
+  };
 }
 
 function inCircle(rect, pointX, pointY) {
@@ -21,5 +23,5 @@ function inCircle(rect, pointX, pointY) {
   const dy = rect.centery() - pointY;
   const radius = (rect.width + rect.height) / 2 - 1;
 
-  return dx**2 + dy**2 < radius**2;
+  return dx ** 2 + dy ** 2 < radius ** 2;
 }
